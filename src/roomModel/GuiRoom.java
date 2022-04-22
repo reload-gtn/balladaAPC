@@ -15,7 +15,7 @@ public class GuiRoom extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("room.fxml"));
-        primaryStage.setTitle("Параметры помещения");
+        primaryStage.setTitle("Параметры помещениЯ");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
