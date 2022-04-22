@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.PerspectiveCamera?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.202-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roomModel.ControllerRoom">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="220.0" prefWidth="220.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="260.0" prefWidth="260.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="260.0" prefHeight="260.0" />
+    <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="260.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+          <TitledPane alignment="CENTER" animated="false" collapsible="false" text="Размеры помещения" textOverrun="CLIP">
+               <content>
+                  <GridPane prefHeight="100.0" prefWidth="332.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="30.0" prefWidth="30.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="50.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="8.0" prefWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="L,м">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="B,м" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="H,м" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lengthRoom" alignment="CENTER_RIGHT" promptText="длина" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField fx:id="widthRoom" alignment="CENTER_RIGHT" promptText="ширина" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField fx:id="heightRoom" alignment="CENTER_RIGHT" promptText="высота" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                     </children>
+                  </GridPane>
+               </content>
+            </TitledPane>
+            <Button alignment="TOP_CENTER" contentDisplay="RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#buttonEnableSizeRoom" prefHeight="27.0" prefWidth="95.0" text="Применить">
+               <VBox.margin>
+                  <Insets left="60.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="buttonMaterial" fx:id="buttonMaterial" defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttonClicked" text="Задать материалы отделки">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </VBox>
+      <Pane fx:id="paneRoomMaket" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <children>
+            <Rectangle fx:id="floorPlane" arcHeight="5.0" arcWidth="5.0" fill="#5dffbc" height="160.0" stroke="BLACK" strokeType="INSIDE" width="230.0" x="10.0" y="80.0" />
+            <Text fx:id="textBDataSignatures" strokeType="OUTSIDE" strokeWidth="0.0" text="B" y="80.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="textLDataSignatures" strokeType="OUTSIDE" strokeWidth="0.0" text="L" x="240.0" y="250.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" y="250.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Circle fx:id="circleIRS" fill="DODGERBLUE" layoutX="10.0" layoutY="240.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="circleAS" fill="#ff1f1f" layoutX="240.0" layoutY="80.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Line fx:id="lineXIRS" endX="200.0" endY="50.0" startY="50.0" style="-fx-stroke-dash-array: 4;" visible="false" />
+            <Line fx:id="lineYIRS" endX="100.0" style="-fx-stroke-dash-array: 4;" visible="false" />
+            <Line fx:id="lineXAS" endX="100.0" startX="-100.0" style="-fx-stroke-dash-array: 4;" visible="false" />
+            <Line fx:id="lineYAS" endX="100.0" startX="-100.0" style="-fx-stroke-dash-array: 4;" visible="false" />
+            <Text fx:id="textIRS" strokeType="OUTSIDE" strokeWidth="0.0" text="ИРС" visible="false">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fx:id="textAS" strokeType="OUTSIDE" strokeWidth="0.0" text="АС" visible="false">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fx:id="textAxisX" strokeType="OUTSIDE" strokeWidth="0.0" text="x" x="125.0" y="250.0">
+               <font>
+                  <Font name="System Italic" size="11.0" />
+               </font>
+            </Text>
+            <Text fx:id="textAxisY" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y" y="160.0">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+         </children>
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin></Pane>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+         <children>
+            <TitledPane alignment="CENTER" collapsible="false" text="Координаты ИРС и АС">
+               <content>
+                  <GridPane prefWidth="220.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="30.0" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="70.0" prefWidth="70.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="70.0" prefWidth="70.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="x,м" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="y,м" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="z,м" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="yIRS" alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="xIRS">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField fx:id="zIRS" alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <Label text="ИРС" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="АС" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="xAS">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField fx:id="yAS" alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <TextField fx:id="zAS" alignment="CENTER_RIGHT" disable="true" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </padding></TextField>
+                        <Circle fill="#ff1f1f" radius="4.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" />
+                        <Circle fill="DODGERBLUE" radius="4.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+               </content>
+            </TitledPane>
+            <Button alignment="TOP_CENTER" contentDisplay="RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#buttonEstablishSignals" prefHeight="27.0" prefWidth="140.0" text="Установить">
+               <VBox.margin>
+                  <Insets left="50.0" top="5.0" />
+               </VBox.margin></Button>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </VBox>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <PerspectiveCamera translateX="100.0" translateY="-50.0" translateZ="300.0" />
+            <Box depth="100.0" height="100.0" translateX="100.0" translateY="100.0" width="100.0" />
+         </children>
+      </Pane>
+      <SubScene height="200.0" width="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <root>
+          <Region />
+        </root>
+      </SubScene>
+   </children>
+   <rotationAxis>
+      <Point3D z="30.0" />
+   </rotationAxis>
+</GridPane>
