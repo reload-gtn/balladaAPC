@@ -66,7 +66,7 @@ public class NoiseMeasurement extends Application {
         Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
         for (int i = 0; i < mixerInfo.length; i++) {
             try {
-                System.out.println((new String(mixerInfo[i].getName().getBytes("Windows-1252"), "Windows-1251")));
+                System.out.println(i+(new String(mixerInfo[i].getName().getBytes("Windows-1252"), "Windows-1251")));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -78,7 +78,7 @@ public class NoiseMeasurement extends Application {
         try {
             DataLine.Info lineInfo = new DataLine.Info(TargetDataLine.class, FORMAT);
             Mixer.Info[] mixerInfos = AudioSystem.getMixerInfo();
-            Mixer mixerS = AudioSystem.getMixer(mixerInfos[1]); // Здесь пишем номер устройства на которое будем посылать звук
+            Mixer mixerS = AudioSystem.getMixer(mixerInfos[6]); // Здесь пишем номер устройства на которое будем посылать звук
             microphoneLine = (TargetDataLine) mixerS.getLine(lineInfo);
             microphoneLine.open(FORMAT);
             microphoneLine.start();

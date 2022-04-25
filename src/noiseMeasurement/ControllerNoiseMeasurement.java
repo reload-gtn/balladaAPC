@@ -25,7 +25,7 @@ public class ControllerNoiseMeasurement implements Initializable {
     }
 
     private void noiseFrequencyDependenceInit() {
-        NoiseMeasurement.get_device_number();
+        NoiseMeasurement.get_device_number(); 
         noiseFrequencyDependence.getXAxis().setLabel("Частота, Гц");
         noiseFrequencyDependence.getYAxis().setLabel("Уровень шума, дБ");
         cbAverageTime.getItems().add("fast");
@@ -47,12 +47,14 @@ public class ControllerNoiseMeasurement implements Initializable {
     public ChoiceBox<String> cbAverageTime;
 
     public void btnMeasurementEnable(){
+        System.out.println("GH");
         NoiseMeasurement.init_mixer();
         // запуск потока чтения данныз с ЗК
-        NoiseMeasurement.init_capture();
+        //NoiseMeasurement.init_capture();
         // запуск потока чтения расчетных данных параметров
-        NoiseMeasurement.init_readcapture();
+        //NoiseMeasurement.init_readcapture();
         // запуск построения временной зав
+        System.out.println("GH2");
     }
 
 }
